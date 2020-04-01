@@ -1,0 +1,63 @@
+{
+  "name": "winter20-worldclocks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:saltams/winter20-worldclocks.git",
+  "author": "MitchJ <mitch_j88@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "build:watch": "webpack --config webpack.config.js --watch",
+    "run:dev-server": "nodemon server/server.js",
+    "start": "NODE_ENV=development run-s build run:dev-server",
+    "start:client": "webpack-dev-server",
+    "lint": "eslint '**/*.js'",
+    "test": "jest --config jest.config.json",
+    "test:watch": "jest --config jest.config.json --watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@testing-library/jest-dom": "^5.3.0",
+    "@testing-library/react": "^10.0.2",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.3",
+    "jest": "^25.2.4",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client/",
+      "public/"
+    ]
+  }
+}
