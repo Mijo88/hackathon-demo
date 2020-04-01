@@ -39,6 +39,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'server', 'public'),
     stats: 'errors-warnings',
+    overlay: true,
+    open: true,
   },
   watchOptions: {
     ignored: /(node_modules|server)/,
