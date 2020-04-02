@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'server', 'public'),
     filename: 'js/bundle.js',
+    publicPath: '/',
   },
   devtool: 'eval-source-map',
   module: {
@@ -22,7 +23,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif|ico)$/i,
+        test: /\.(png|jpe?g|gif|ico|svg)$/i,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
@@ -41,6 +42,7 @@ module.exports = {
     stats: 'errors-warnings',
     overlay: true,
     open: true,
+    historyApiFallback: true,
   },
   watchOptions: {
     ignored: /(node_modules|server)/,

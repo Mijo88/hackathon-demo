@@ -1,11 +1,9 @@
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
+@import 'reset';
+@import 'layout';
+@import 'header';
+@import 'movie-block';
+@import 'movie-page';
+@import 'theme';
 
 .hidden {
   display: none !important;

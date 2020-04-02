@@ -1,0 +1,14 @@
+.page-header {
+  text-align: center;
+  padding: 30px;
+}
+
+.logo {
+  height: 50px;
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    height: 35px;
+  }
+}

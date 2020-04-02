@@ -1,12 +1,27 @@
+const path = require('path');
+const fs = require('fs');
 const express = require('express');
-const fetch = require('node-fetch');
+const { fetch } = require('./util');
 const moviedbConfig = require('./config.json');
 
 const router = express.Router();
 
-const { API_KEY } = process.env;
+// fetch the API configuration data required to construct image sources
+fetch.fromMoviedbApi('/configuration')
+  .then((response) => {
+    if (response.error) {
+      return;
+    }
 
-const setAllowCors = (_, res, next) => {
+    fs.writeFileSync(
+      path.resolve(__dirname, 'config.json'),
+      JSON.stringify(response),
+      'utf8',
+    );
+  });
+
+// enable CORS for this api resource
+const allowCrossDomain = (_, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
@@ -15,13 +30,37 @@ const setAllowCors = (_, res, next) => {
   next();
 };
 
-// allow CORS for this router
-router.use(setAllowCors);
+// apply middleware
+router.use(allowCrossDomain);
 
-router.get('/test', (_, res) => {
-  fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`)
-    .then((response) => response.json())
-    .then((data) => res.json(data));
+// routes
+router.get('/config', (_, res) => {
+  res.json(moviedbConfig);
+});
+
+router.get('/genres', (_, res) => {
+  fetch.fromMoviedbApi('/genre/movie/list')
+    .then((response) => {
+      res.json(response);
+    });
+});
+
+router.get('/movies/:id', (req, res) => {
+  const { id } = req.params;
+
+  fetch.fromMoviedbApi(`/movie/${id}`)
+    .then((response) => {
+      res.json(response);
+    });
+});
+
+router.get('/trending', (req, res) => {
+  const { mediaType, timeWindow } = req.query;
+
+  fetch.fromMoviedbApi(`/trending/${mediaType}/${timeWindow}`)
+    .then((response) => {
+      res.json(response);
+    });
 });
 
 module.exports.api = router;

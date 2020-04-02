@@ -1,0 +1,29 @@
+.movie-details {
+  padding: 30px;
+}
+
+.movie-title {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.movie-info-list {
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 15px 0;
+  }
+
+  strong {
+    color: #2ABBD1;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .page-movie {
+    .col-6 {
+      width: 100%;
+    }
+  }
+}

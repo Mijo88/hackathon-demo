@@ -10,7 +10,7 @@
     "build:watch": "webpack --config webpack.config.js --watch",
     "run:dev-server": "nodemon server/server.js",
     "start": "NODE_ENV=development run-s build run:dev-server",
-    "start:client": "webpack-dev-server",
+    "start:client": "webpack-dev-server --history-api-fallback",
     "lint": "eslint '**/*.js'",
     "test": "jest --config jest.config.json",
     "test:watch": "jest --config jest.config.json --watch"
@@ -22,7 +22,9 @@
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "regenerator-runtime": "^0.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -57,7 +59,8 @@
   "nodemonConfig": {
     "ignore": [
       "client/",
-      "public/"
+      "public/",
+      "moviedb/config.json"
     ]
   }
 }

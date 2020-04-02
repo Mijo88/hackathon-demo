@@ -1,0 +1,40 @@
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-block {
+  width: 300px;
+  margin: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #999;
+
+  a {
+    width: 100%;
+  }
+}
+
+.movie-block-title {
+  color: #BBB;
+}
+
+.poster {
+  width: 100%;
+}
+
+.poster-image {
+  width: 100%;
+}
+
+.movie-block-info {
+  padding: 20px 15px;
+  color: #888;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #FFF;
+
+  strong {
+    color: #2ABBD1;
+  }
+}
