@@ -83,16 +83,20 @@ class App extends Component {
           <MovieDBContext.Provider value={movieDBContext}>
             <Switch>
 
-              <Route exact path="/movies">
-                <h1>Movies</h1>
+              <Route exact path="/media">
+                <h1>All Media</h1>
               </Route>
 
-              <Route path="/movies/:id">
+              <Route exact path="/media/:type">
+                <h1>Specific</h1>
+              </Route>
+
+              <Route path="/media/:type/:id">
                 <h1>Single Movie</h1>
               </Route>
 
               <Route exact path="/">
-                <Redirect to="/movies" />
+                <Redirect to="/media" />
               </Route>
 
               <Route>
