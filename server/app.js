@@ -6,17 +6,18 @@ const moviedb = require('./moviedb');
 
 const app = express();
 
-// apply middleware
+// add middleware
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger.requests);
 
-//  apply router
+// add routers
 app.use('/api/moviedb', moviedb.api);
 
+// serve the index page on any get request and let the client handle the route
 app.get('*', (_, res) => (
-  res.redirect(301, '/')
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 ));
 
 module.exports = app;

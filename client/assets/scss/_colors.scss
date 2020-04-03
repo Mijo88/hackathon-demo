@@ -1,0 +1,15 @@
+$colors: (
+  "background": (
+    "primary": #111,
+    "secondary": #F5F5F5,
+  ),
+  "header": (
+    "primary": #f5f5f5,
+    "secondary": #111,
+    "accent": #999
+  )
+);
+
+@function color($type, $variant) {
+  @return map-get(map-get($colors, $type), $variant);
+}

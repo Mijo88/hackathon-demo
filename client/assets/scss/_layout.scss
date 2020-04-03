@@ -4,12 +4,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-}
-
-#root {
-  position: relative;
-  z-index: 1;
 }
 
 .container {
