@@ -17,7 +17,7 @@ const allowCrossDomain = (_, res, next) => {
 // apply middleware
 router.use(allowCrossDomain);
 
-// fetch the API configuration data required to construct image sources
+// fetch the api configuration data required to construct image sources
 router.get('/config', async (_, res) => {
   const json = await fetch.fromMoviedbApi('/configuration');
   res.json(json);

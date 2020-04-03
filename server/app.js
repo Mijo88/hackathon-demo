@@ -15,7 +15,12 @@ app.use(logger.requests);
 // add routers
 app.use('/api/moviedb', moviedb.api);
 
-// serve the index page on any get request and let the client handle the route
+// catch all uncaught requests to api routes and return with 404
+app.all('/api', (_, res) => {
+  res.sendStatus(404);
+});
+
+// serve the index page on any get request to non-api routes
 app.get('*', (_, res) => (
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 ));
